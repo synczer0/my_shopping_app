@@ -1,11 +1,7 @@
-import 'dart:io';
 import 'package:flutter/widgets.dart';
 import 'package:logger/logger.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-
-// Models
-import '../model/shopping_model.dart';
 
 class DatabaseAccess extends ChangeNotifier {
   final int version = 1; // SQL Versioning

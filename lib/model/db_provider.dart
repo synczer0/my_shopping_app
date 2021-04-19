@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:my_shopping_list/db/shopping_db.dart';
 import 'package:my_shopping_list/model/shopping_model.dart';

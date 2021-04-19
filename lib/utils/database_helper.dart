@@ -1,15 +1,10 @@
-import 'dart:io';
 import 'package:flutter/widgets.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-// Models
-import '../model/shopping_model.dart';
-
 class DatabaseAccess with ChangeNotifier {
   final int version = 1; // SQL Versioning
   final oneSecond = Duration(seconds: 1);
-  List<Map<String, dynamic>> _getList;
   Database _db;
 
   // Factory Constructor

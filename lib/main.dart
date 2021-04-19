@@ -3,9 +3,6 @@ import 'package:my_shopping_list/model/db_provider.dart';
 import 'pages/add_page.dart';
 import 'pages/edit_page.dart';
 import 'package:provider/provider.dart';
-import 'package:provider/single_child_widget.dart';
-import 'model/test_model.dart';
-import 'model/list_model.dart';
 import 'model/shopping_model.dart';
 import 'db/shopping_db.dart';
 
@@ -43,7 +40,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  MyItemsList lists;
   DatabaseAccess database = DatabaseAccess();
   List<Map<String, dynamic>> getData;
   ShoppingModel shopdata;
