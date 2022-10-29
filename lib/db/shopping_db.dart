@@ -6,7 +6,7 @@ import 'package:sqflite/sqflite.dart';
 class DatabaseAccess extends ChangeNotifier {
   final int version = 1; // SQL Versioning
 
-  Database _db;
+  Database? _db;
   var logger = Logger();
 
   // Factory Constructor
@@ -17,7 +17,7 @@ class DatabaseAccess extends ChangeNotifier {
     return _dbAcess;
   }
 
-  Future<Database> initDB() async {
+  Future<Database?>? initDB() async {
     WidgetsFlutterBinding.ensureInitialized();
 
     if (_db == null) {
@@ -35,7 +35,7 @@ class DatabaseAccess extends ChangeNotifier {
     return _db;
   }
 
-  Future<Database> dropDBTable() async {
+  Future<Database?> dropDBTable() async {
     WidgetsFlutterBinding.ensureInitialized();
 
     if (_db == null) {
@@ -54,21 +54,21 @@ class DatabaseAccess extends ChangeNotifier {
   }
 
   Future<void> insertItem(Map<String, dynamic> maps) async {
-    await _db.insert('shop_table', maps,
+    await _db!.insert('shop_table', maps,
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Future<List<Map<String, dynamic>>> getItems() async {
     await initDB();
     List<Map<String, dynamic>> getData =
-        await _db.rawQuery('SELECT * FROM shop_table');
+        await _db!.rawQuery('SELECT * FROM shop_table');
 
     return getData;
   }
 
-  Future<void> removeItem(int id) async {
+  Future<void> removeItem(int? id) async {
     await initDB();
-    await _db.delete('shop_table', where: "id = ?", whereArgs: [id]);
+    await _db!.delete('shop_table', where: "id = ?", whereArgs: [id]);
   }
 
   Future<void> updateItem(
@@ -82,6 +82,6 @@ class DatabaseAccess extends ChangeNotifier {
     };
 
     await initDB();
-    await _db.update('shop_table', toUpdate, where: 'id = ?', whereArgs: [id]);
+    await _db!.update('shop_table', toUpdate, where: 'id = ?', whereArgs: [id]);
   }
 }

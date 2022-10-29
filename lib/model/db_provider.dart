@@ -6,7 +6,7 @@ import 'package:sqflite/sqflite.dart';
 class ItemProvider extends ChangeNotifier {
   List<ShoppingModel> aList = [];
   DatabaseAccess DBHelper = DatabaseAccess();
-  Database db;
+  Database? db;
 
   // Set and acquire from DB to initialize the ShoppingModel Class data
   Future<void> fetchAndSet() async {

@@ -26,7 +26,7 @@ class _EditItemsState extends State<EditItems> {
   Widget build(BuildContext context) {
     // get the arguments from navigation
     final routes =
-        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     var _getValues = routes.values.toList();
 
     // set the initial value on the text form field
@@ -120,7 +120,7 @@ class _EditItemsState extends State<EditItems> {
                           builder: (context, myModel, child) {
                         return ElevatedButton(
                           onPressed: () {
-                            if (_formKey.currentState.validate()) {
+                            if (_formKey.currentState!.validate()) {
                               updateDatabase(
                                   _getValues[0],
                                   itemName.text,

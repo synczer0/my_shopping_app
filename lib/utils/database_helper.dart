@@ -5,7 +5,7 @@ import 'package:sqflite/sqflite.dart';
 class DatabaseAccess with ChangeNotifier {
   final int version = 1; // SQL Versioning
   final oneSecond = Duration(seconds: 1);
-  Database _db;
+  Database? _db;
 
   // Factory Constructor
   static final DatabaseAccess _dbAcess = DatabaseAccess._internal();
@@ -15,7 +15,7 @@ class DatabaseAccess with ChangeNotifier {
     return _dbAcess;
   }
 
-  Future<Database> initDB() async {
+  Future<Database?> initDB() async {
     WidgetsFlutterBinding.ensureInitialized();
 
     if (_db == null) {
@@ -31,7 +31,7 @@ class DatabaseAccess with ChangeNotifier {
     return _db;
   }
 
-  Future<Database> dropDBTable() async {
+  Future<Database?> dropDBTable() async {
     WidgetsFlutterBinding.ensureInitialized();
 
     if (_db == null) {
@@ -48,19 +48,19 @@ class DatabaseAccess with ChangeNotifier {
   }
 
   Future<void> insertItem(Map<String, dynamic> maps) async {
-    await _db.insert('shop_table', maps,
+    await _db!.insert('shop_table', maps,
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Future<List<Map<String, dynamic>>> getItems() async {
     List<Map<String, dynamic>> getData =
-        await _db.rawQuery('SELECT * FROM shop_table');
+        await _db!.rawQuery('SELECT * FROM shop_table');
 
     return getData;
   }
 
-  int getLe() {
-    int i;
+  int? getLe() {
+    int? i;
     getItems().then((value) => i = value.length);
     print(i);
     return i;

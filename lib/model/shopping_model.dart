@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class ShoppingModel extends ChangeNotifier {
-  int id;
-  String itemName;
-  String description;
-  double price;
-  int qty;
-  int priority;
+  int? id;
+  String? itemName;
+  String? description;
+  double? price;
+  int? qty;
+  int? priority;
 
-  List<Map> listM;
+  List<Map>? listM;
 
   ShoppingModel(
       {this.id,

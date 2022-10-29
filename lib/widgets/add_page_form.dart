@@ -105,7 +105,7 @@ class _AddFormState extends State<AddForm> {
                       builder: (context, myModel, child) {
                     return ElevatedButton(
                       onPressed: () {
-                        if (_formKey.currentState.validate()) {
+                        if (_formKey.currentState!.validate()) {
                           myModel.setId(utils
                               .returnRandomNumber()); // set some random generated number
                           myModel.setPriority(2);

@@ -34,18 +34,18 @@ class MyShoppingList extends StatelessWidget {
 }
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   DatabaseAccess database = DatabaseAccess();
-  List<Map<String, dynamic>> getData;
-  ShoppingModel shopdata;
+  List<Map<String, dynamic>>? getData;
+  ShoppingModel? shopdata;
   ItemProvider pr = ItemProvider();
 
-  Future removeItems(int id) async {
+  Future removeItems(int? id) async {
     await database.removeItem(id);
   }
 
@@ -120,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                           initData();
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Text(value.aList[index].itemName +
+                              content: Text(value.aList[index].itemName! +
                                   ' Item Removed.'),
                             ),
                           );
@@ -156,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                                 }),
                             subtitle: Text(
                                 'PHP ' + value.aList[index].price.toString()),
-                            title: Text(value.aList[index].itemName),
+                            title: Text(value.aList[index].itemName!),
                           ),
                         ),
                       );
